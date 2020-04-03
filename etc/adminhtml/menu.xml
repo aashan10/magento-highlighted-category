@@ -1,13 +1,8 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
-	<menu>
-		<add id="Aashan::top_level" module="Aashan_HighlightedCategories" resource="Magento_Backend::content" sortOrder="9999" title="Aashan"/>
-		<add action="aashan_highlightedcategories/highlightedcategory/index" id="Aashan_HighlightedCategories::aashan_highlightedcategories_highlightedcategory" module="Aashan_HighlightedCategories" parent="Aashan::top_level" resource="Magento_Backend::content" sortOrder="9999" title="HighlightedCategory"/>
-		<add action="highlightedcategories/index/index" id="Aashan_HighlightedCategories::index_index" module="Aashan_HighlightedCategories" parent="Aashan::top_level" resource="Aashan_HighlightedCategories::index_index" sortOrder="9999" title="index index"/>
-		<add action="highlightedcategories/index/edit" id="Aashan_HighlightedCategories::index_edit" module="Aashan_HighlightedCategories" parent="Aashan::top_level" resource="Aashan_HighlightedCategories::index_edit" sortOrder="9999" title="index edit"/>
-		<add action="highlightedcategories/index/update" id="Aashan_HighlightedCategories::index_update" module="Aashan_HighlightedCategories" parent="Aashan::top_level" resource="Aashan_HighlightedCategories::index_update" sortOrder="9999" title="index update"/>
-		<add action="highlightedcategories/index/delete" id="Aashan_HighlightedCategories::index_delete" module="Aashan_HighlightedCategories" parent="Aashan::top_level" resource="Aashan_HighlightedCategories::index_delete" sortOrder="9999" title="index delete"/>
-		<add action="highlightedcategories/index/newAction" id="Aashan_HighlightedCategories::index_newAction" module="Aashan_HighlightedCategories" parent="Aashan::top_level" resource="Aashan_HighlightedCategories::index_newAction" sortOrder="9999" title="index newAction"/>
-		<add action="highlightedcategories/index/save" id="Aashan_HighlightedCategories::index_save" module="Aashan_HighlightedCategories" parent="Aashan::top_level" resource="Aashan_HighlightedCategories::index_save" sortOrder="9999" title="index save"/>
-	</menu>
+    <menu>
+        <add id="Aashan::top_level" module="Aashan_HighlightedCategories" resource="Magento_Backend::content" sortOrder="9999" title="Highlighted Categories"/>
+        <add action="highlightedcategories/index/index" id="Aashan_HighlightedCategories::index_index" module="Aashan_HighlightedCategories" parent="Aashan::top_level" resource="Aashan_HighlightedCategories::index_index" sortOrder="9999" title="Show All Highlights"/>
+        <add action="highlightedcategories/index/newAction" id="Aashan_HighlightedCategories::index_newAction" module="Aashan_HighlightedCategories" parent="Aashan::top_level" resource="Aashan_HighlightedCategories::index_newAction" sortOrder="9999" title="Add New Highlight"/>
+    </menu>
 </config>
