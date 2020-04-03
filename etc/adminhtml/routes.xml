@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+	<router id="admin">
+		<route frontName="aashan_highlightedcategories" id="aashan_highlightedcategories">
+			<module before="Magento_Backend" name="Aashan_HighlightedCategories"/>
+		</route>
+		<route frontName="highlightedcategories" id="highlightedcategories">
+			<module before="Magento_Backend" name="Aashan_HighlightedCategories"/>
+		</route>
+	</router>
+</config>
