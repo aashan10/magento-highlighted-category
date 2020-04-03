@@ -1,0 +1,22 @@
+{
+    "name": "aashan/module-highlightedcategories",
+    "description": "A Magento 2 Module for highlighted categories.",
+    "type": "magento2-module",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Ashan Ghimire",
+            "email": "ashanghimire10@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Aashan\\HighlightedCategories\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}
