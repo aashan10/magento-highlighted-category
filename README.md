@@ -1,60 +1,40 @@
-# Mage2 Module Aashan HighlightedCategories
+# Highlighted Categories
 
-    ``aashan/module-highlightedcategories``
+ - [Main Functionality](#main-functionality)
+ - [Installation](#installation)
+    - [Clone and Install](#clone-and-install)
+    - [Zip file Installation](#zip-file-installation)
+    - [Post Installation](#post-installation)
+ - [Configuration](#configuration)
+ - [Contributing](#contributing)
 
- - [Main Functionalities](#markdown-header-main-functionalities)
- - [Installation](#markdown-header-installation)
- - [Configuration](#markdown-header-configuration)
- - [Specifications](#markdown-header-specifications)
- - [Attributes](#markdown-header-attributes)
 
-
-## Main Functionalities
+## Main Functionality 
 A Magento 2 Module for highlighted categories.
+You can use this module for creating highlights of categories in
+your Magento 2 pages. This module is under active development. So,
+contributions are very much welcomed. 
 
 ## Installation
-\* = in production please use the `--keep-generated` option
 
-### Type 1: Zip file
+### Clone and Install
+- Create a `Aashan` directory under `app/code` directory of your Magento 2 installation.
+- Clone the repository into `app/code/Aashan/HighlightedCategories` directory. 
+Use the `production` branch.
 
- - Unzip the zip file in `app/code/Aashan`
+### Zip file installation
+
+ - Unzip the zip file in `app/code/Aashan` and rename the directory 
+ `magento-highlighted-categories` into `HighlightedCategories`
+ 
+ ### Post Installation
  - Enable the module by running `php bin/magento module:enable Aashan_HighlightedCategories`
- - Apply database updates by running `php bin/magento setup:upgrade`\*
+ - Apply database updates by running `php bin/magento setup:upgrade`
  - Flush the cache by running `php bin/magento cache:flush`
 
 ## Configuration
 
- - Enable Highlighted Categories (general/configurations/enable_highlighted_categories)
+ - Enable Highlighted Categories in `Store > Configurations > Highlighted Categories > General`
 
-
-## Specifications
-
- - Widget
-	- highlightedCategory
-
- - Model
-	- HighlightedCategory
-
- - Block
-	- Widget\HighlightedCategory > widget/highlightedcategory.phtml
-
- - Controller
-	- adminhtml > highlightedcategories/index/index
-
- - Controller
-	- adminhtml > highlightedcategories/index/edit
-
- - Controller
-	- adminhtml > highlightedcategories/index/update
-
- - Controller
-	- adminhtml > highlightedcategories/index/delete
-
- - Controller
-	- adminhtml > highlightedcategories/index/newAction
-
- - Controller
-	- adminhtml > highlightedcategories/index/save
-
-
-
+## Contributing
+- Fork this repository and send pull requests clearly mentioning the objective of the PR.
