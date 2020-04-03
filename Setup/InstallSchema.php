@@ -8,7 +8,6 @@ use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
 use Psr\Log\LoggerInterface;
-use Zend_Db_Exception;
 
 class InstallSchema implements InstallSchemaInterface
 {
