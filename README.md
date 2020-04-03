@@ -38,3 +38,4 @@ Use the `production` branch.
 
 ## Contributing
 - Fork this repository and send pull requests clearly mentioning the objective of the PR.
+- Send the pull requests to `dev` branch.
