@@ -97,6 +97,30 @@
                 </editor>
             </settings>
         </column>
+        <column name="code">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Code</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="expires_on">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Expires On</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
 		<actionsColumn class="Aashan\HighlightedCategories\Ui\Component\Listing\Column\HighlightedCategoryActions" name="actions">
 			<settings>
 				<indexField>id</indexField>
