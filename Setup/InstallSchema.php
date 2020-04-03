@@ -76,7 +76,7 @@ class InstallSchema implements InstallSchemaInterface
                         Table::TYPE_TIMESTAMP,
                         null,
                         [
-                            'nullable' => false
+                            'nullable' => true
                         ],
                         'Expires On'
                     )
