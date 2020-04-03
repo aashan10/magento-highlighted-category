@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="highlighted_category" sortOrder="10" translate="label">
+			<label>Highlighted Categories</label>
+		</tab>
+		<section id="highlighted_category" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+			<label>General</label>
+			<tab>highlighted_category</tab>
+			<resource>Aashan_HighlightedCategories::config_aashan_highlightedcategories</resource>
+			<group id="configurations" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+				<label>General Configurations</label>
+				<field id="enable_highlighted_categories" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
+					<label>Enable Highlighted Categories</label>
+					<comment>If unchecked, category highlight will be disabled.</comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Aashan_HighlightedCategories::HighlightedCategory" sortOrder="10" title="HighlightedCategory">
+					<resource id="Aashan_HighlightedCategories::HighlightedCategory_save" sortOrder="10" title="Save HighlightedCategory"/>
+					<resource id="Aashan_HighlightedCategories::HighlightedCategory_delete" sortOrder="20" title="Delete HighlightedCategory"/>
+					<resource id="Aashan_HighlightedCategories::HighlightedCategory_update" sortOrder="30" title="Update HighlightedCategory"/>
+					<resource id="Aashan_HighlightedCategories::HighlightedCategory_view" sortOrder="40" title="View HighlightedCategory"/>
+				</resource>
+				<resource id="Magento_Backend::stores">
+					<resource id="Magento_Backend::stores_settings">
+						<resource id="Magento_Config::config">
+							<resource id="Aashan_HighlightedCategories::config_aashan_highlightedcategories" title="general"/>
+						</resource>
+					</resource>
+				</resource>
+				<resource id="Aashan_HighlightedCategories::highlightedcategories" sortOrder="10" title="highlightedcategories">
+					<resource id="Aashan_HighlightedCategories::index_index" sortOrder="10" title="index index"/>
+					<resource id="Aashan_HighlightedCategories::index_edit" sortOrder="10" title="index edit"/>
+					<resource id="Aashan_HighlightedCategories::index_update" sortOrder="10" title="index update"/>
+					<resource id="Aashan_HighlightedCategories::index_delete" sortOrder="10" title="index delete"/>
+					<resource id="Aashan_HighlightedCategories::index_newAction" sortOrder="10" title="index newAction"/>
+					<resource id="Aashan_HighlightedCategories::index_save" sortOrder="10" title="index save"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>
