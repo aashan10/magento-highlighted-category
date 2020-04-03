@@ -12,7 +12,7 @@
 				<label>General Configurations</label>
 				<field id="enable_highlighted_categories" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
 					<label>Enable Highlighted Categories</label>
-					<comment>If unchecked, category highlight will be disabled.</comment>
+					<comment>If selected no, category highlight will be disabled.</comment>
 					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
 				</field>
 			</group>
