@@ -21,13 +21,13 @@ class InstallSchema implements InstallSchemaInterface
         $this->logger = $logger;
     }
 
-    public function install(SchemaSetupInterface $installer, ModuleContextInterface $context)
+    public function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
-        $installer->startSetup();
-        if (!$installer->tableExists('aashan_highlighted_categories')) {
+        $setup->startSetup();
+        if (!$setup->tableExists('aashan_highlighted_categories')) {
             try {
-                $table = $installer->getConnection()
-                    ->newTable($installer->getTable('aashan_highlighted_categories'))
+                $table = $setup->getConnection()
+                    ->newTable($setup->getTable('aashan_highlighted_categories'))
                     ->addColumn(
                         'id',
                         Table::TYPE_INTEGER,
@@ -36,7 +36,8 @@ class InstallSchema implements InstallSchemaInterface
                             'identity' => true,
                             'nullable' => false,
                             'unsigned' => true,
-                            'index' => true
+                            'index' => true,
+                            'primary' => true
                         ],
                         'Highlighted Category ID'
                     )
@@ -81,7 +82,7 @@ class InstallSchema implements InstallSchemaInterface
                         'Expires On'
                     )
                     ->setComment('Highlighted Categories Table');
-                $installer->getConnection()->createTable($table);
+                $setup->getConnection()->createTable($table);
             } catch (Exception $exception) {
                 $this->logger->critical(
                     $exception->getFile()
@@ -91,7 +92,7 @@ class InstallSchema implements InstallSchemaInterface
                     $exception->getMessage()
                 );
             }
-            $installer->endSetup();
+            $setup->endSetup();
         }
     }
 }
