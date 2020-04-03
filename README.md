@@ -2,6 +2,7 @@
 
  - [Main Functionality](#main-functionality)
  - [Installation](#installation)
+    - [Composer Installation](#composer-installation)
     - [Clone and Install](#clone-and-install)
     - [Zip file Installation](#zip-file-installation)
     - [Post Installation](#post-installation)
@@ -16,6 +17,9 @@ your Magento 2 pages. This module is under active development. So,
 contributions are very much welcomed. 
 
 ## Installation
+
+### Composer Installation
+- Run `composer require aashan/module-highlightedcategories` inside your magento installation directory.
 
 ### Clone and Install
 - Create a `Aashan` directory under `app/code` directory of your Magento 2 installation.
