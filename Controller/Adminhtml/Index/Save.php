@@ -41,8 +41,8 @@ class Save extends Action
         PageFactory $resultPageFactory,
         CollectionFactory $factory
     ) {
-        $this->resultPageFactory = $resultPageFactory;
         parent::__construct($context);
+        $this->resultPageFactory = $resultPageFactory;
         $this->factory = $factory;
     }
 
