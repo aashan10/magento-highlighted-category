@@ -1,55 +1,49 @@
 <?php
+
 /**
- * A Magento 2 Module for highlighted categories.
- * Copyright (C) 2020  Ashan Ghimire
+ * This file is a part of HighlightedCategories Magento 2 module.
  *
- * This file is part of Aashan/HighlightedCategories.
- *
- * Aashan/HighlightedCategories is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * @module HighlightedCategories
+ * @author Ashan Ghimire <ashanghimire10@gmail.com>
+ * @copyright Ashan Ghimire, 2020
  */
 
 namespace Aashan\HighlightedCategories\Controller\Adminhtml\Index;
 
-use Magento\Backend\App\Action;
+use Aashan\HighlightedCategories\Model\HighlightedCategory;
+use Aashan\HighlightedCategories\Model\ResourceModel\HighlightedCategory as HCResourceModel;
+use Aashan\HighlightedCategories\Model\ResourceModel\HighlightedCategory\Collection;
+use Exception;
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\View\Result\PageFactory;
+use Magento\Framework\App\Action\Action;
 use Magento\Framework\Controller\ResultInterface;
 
-/**
- * Class Delete
- *
- * @package Aashan\HighlightedCategories\Controller\Adminhtml\Index
- */
 class Delete extends Action
 {
     /**
-     * @var PageFactory
+     * @var Collection
      */
-    protected $resultPageFactory;
+    private $highlightCollection;
+    /**
+     * @var HCResourceModel
+     */
+    private $resourceModel;
 
     /**
      * Constructor
      *
-     * @param Context  $context
-     * @param PageFactory $resultPageFactory
+     * @param Context $context
+     * @param Collection $highlightCollection
+     * @param HCResourceModel $resourceModel
      */
     public function __construct(
         Context $context,
-        PageFactory $resultPageFactory
+        Collection $highlightCollection,
+        HCResourceModel $resourceModel
     ) {
-        $this->resultPageFactory = $resultPageFactory;
         parent::__construct($context);
+        $this->highlightCollection = $highlightCollection;
+        $this->resourceModel = $resourceModel;
     }
 
     /**
@@ -59,7 +53,23 @@ class Delete extends Action
      */
     public function execute()
     {
-        return $this->resultPageFactory->create();
+        $highlightId = (string) $this->getRequest()->getParam('id');
+        if (!$highlightId) {
+            $this->messageManager->addErrorMessage(__('The highlight was not found!'));
+        } else {
+            /** @var HighlightedCategory $highlight */
+            $highlight = $this->highlightCollection->getItemById($highlightId);
+            if ($highlight->getData('id') == null) {
+                $this->messageManager->addErrorMessage(__('The highlight doesn\'t exist!'));
+            } else {
+                try {
+                    $this->resourceModel->delete($highlight);
+                    $this->messageManager->addSuccessMessage(__('The highlight has been deleted successfully!'));
+                } catch (Exception $e) {
+                    $this->messageManager->addErrorMessage(__('The highlight couldn\'t be deleted!'));
+                }
+            }
+        }
+        return $this->resultRedirectFactory->create()->setPath('*/*/');
     }
 }
-
