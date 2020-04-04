@@ -45,21 +45,7 @@
 				<param name="selectProvider" xsi:type="string">aashan_highlighted_categories_listing.aashan_highlighted_categories_listing.aashan_highlighted_categories_columns.ids</param>
 				<param name="enabled" xsi:type="boolean">true</param>
 				<param name="indexField" xsi:type="string">id</param>
-				<param name="clientConfig" xsi:type="array">
-					<item name="saveUrl" path="aashan_highlightedcategories/HighlightedCategory/inlineEdit" xsi:type="url"/>
-					<item name="validateBeforeSave" xsi:type="boolean">false</item>
-				</param>
 			</editorConfig>
-			<childDefaults>
-				<param name="fieldAction" xsi:type="array">
-					<item name="provider" xsi:type="string">aashan_highlighted_categories_listing.aashan_highlighted_categories_listing.aashan_highlighted_categories_columns_editor</item>
-					<item name="target" xsi:type="string">startEdit</item>
-					<item name="params" xsi:type="array">
-						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
-						<item name="1" xsi:type="boolean">true</item>
-					</item>
-				</param>
-			</childDefaults>
 		</settings>
 		<selectionsColumn name="ids">
 			<settings>
