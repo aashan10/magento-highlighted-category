@@ -65,7 +65,7 @@ class Save extends Action
         $highlightedCategory->setData('parent_category', $request['parent_category']);
         $highlightedCategory->setData('child_categories', json_encode($request['child_categories']));
         $highlightedCategory->setData('cms_block', $request['cms_block']);
-        $highlightedCategory->setData('expires_on', DateTime::createFromFormat('Y-m-d', time()));
+        $highlightedCategory->setData('expires_on', $request['expires_on']);
         $highlightedCategory->save();
         $this->messageManager->addSuccessMessage(__('Highlight has been saved successfully!'));
         return $this->resultRedirectFactory->create()->setPath('*/*/');
