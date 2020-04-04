@@ -11,8 +11,8 @@ namespace Aashan\HighlightedCategories\Controller\Adminhtml\Index;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\View\Result\PageFactory;
 
 class Index extends Action
 {
@@ -25,7 +25,7 @@ class Index extends Action
     /**
      * Constructor
      *
-     * @param Context  $context
+     * @param Context $context
      * @param PageFactory $resultPageFactory
      */
     public function __construct(
@@ -48,4 +48,3 @@ class Index extends Action
         return $page;
     }
 }
-
