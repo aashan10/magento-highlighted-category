@@ -77,16 +77,16 @@ class Save extends Action
     public function validateRequest()
     {
         $request = $this->getRequest();
-        if ($request->getParam('code') === null) {
+        if ($request->getParam('code') == null) {
             $this->messageManager->addErrorMessage(__('The `Code` field is required!'));
         }
-        if ($request->getParam('parent_category') === null) {
+        if ($request->getParam('parent_category') == null) {
             $this->messageManager->addErrorMessage(__('The `Parent Category` field is required!'));
         }
-        if ($request->getParam('child_categories') === null) {
+        if ($request->getParam('child_categories') == null) {
             $this->messageManager->addErrorMessage(__('The `Child Categories` field is required!'));
         }
-        if ($request->getParam('cms_block') === null) {
+        if ($request->getParam('cms_block') == null) {
             $this->messageManager->addErrorMessage(__('The `CMS Block` field is required!'));
         }
         if (
