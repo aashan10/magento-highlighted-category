@@ -1,6 +1,43 @@
-<?php ?>
+<?php
+
+use Aashan\HighlightedCategories\Block\Adminhtml\UpdateCategories;
+
+/** @var UpdateCategories $block */
+
+?>
 <script type="text/javascript">
     require(['jquery'], function ($) {
-        // TODO : Ajax call when the parent category is selected.
+        $(document.body).change(function(event){
+            let parentCategory = $('select[name="parent_category"]');
+            if( parentCategory &&
+                event.target.id === parentCategory.attr('id') &&
+                parentCategory.val()
+            ) {
+                let url = '<?= $block->getApiUrl() ?>';
+                let childCategories = $('select[name="child_categories"]');
+                $.ajax({
+                    url : url,
+                    method : 'GET',
+                    data : {
+                        id : parentCategory.val()
+                    },
+                    success : function (response) {
+                        childCategories.empty();
+                        response.data.child_categories.map(function (item) {
+                            let option = document.createElement('option');
+                            option.setAttribute('value', item.id);
+                            option.innerHTML = item.name;
+                            childCategories.append(option);
+                        });
+                    },
+                    error : function (error) {
+                        const json = error.responseJSON;
+                        if(json && json.status === 'success') {
+                            this.success(json);
+                        }
+                    }
+                });
+            }
+        });
     });
 </script>

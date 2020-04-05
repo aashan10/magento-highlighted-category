@@ -5,7 +5,7 @@
             <uiComponent name="aashan_highlighted_categories_form"/>
             <block name="formScripts"
                    template="Aashan_HighlightedCategories::updatecategories.phtml"
-                   class="Magento\Framework\View\Element\Template"/>
+                   class="Aashan\HighlightedCategories\Block\Adminhtml\UpdateCategories"/>
         </referenceContainer>
 	</body>
 </page>
