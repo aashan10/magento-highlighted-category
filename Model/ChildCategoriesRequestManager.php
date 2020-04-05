@@ -59,13 +59,12 @@ class ChildCategoriesRequestManager implements ChildCategoriesRequestManagerInte
         /** @var Category $category */
         $category = $this->collection->getItemById($categoryId);
         $children = $this->getChildCategories($category);
-        $this->response->setStatusCode(200);
         $this->response->setContent(json_encode([
             'status' => 'success',
             'data' => [
                 'parent_category' => [
                     'name' => $category->getData('name'),
-                    'id' => $category->getData('id')
+                    'id' => $category->getId()
                 ],
                 'child_categories' => $children
             ]
