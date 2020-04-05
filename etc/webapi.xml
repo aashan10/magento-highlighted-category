@@ -34,7 +34,7 @@
     <route method="GET" url="/V1/aashan-highlightedcategories/subcategories/">
         <service class="Aashan\HighlightedCategories\Api\ChildCategoriesRequestManagerInterface" method="getData"/>
         <resources>
-            <resource ref="Aashan_HighlightedCategories::HighlightedCategory_view"/>
+            <resource ref="anonymous"/>
         </resources>
     </route>
 </routes>
