@@ -1,12 +1,19 @@
 <?php
 
+/**
+ * This file is a part of HighlightedCategories Magento 2 module.
+ *
+ * @module HighlightedCategories
+ * @author Ashan Ghimire <ashanghimire10@gmail.com>
+ * @copyright Ashan Ghimire, 2020
+ */
+
 namespace Aashan\HighlightedCategories\Model;
 
 use Aashan\HighlightedCategories\Api\ChildCategoriesRequestManagerInterface;
 use Magento\Catalog\Model\Category;
 use Magento\Catalog\Model\ResourceModel\Category\Collection;
 use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory as CategoryCollectionFactory;
-use Magento\Framework\DataObject;
 use Magento\Framework\Webapi\Rest\Request;
 use Magento\Framework\Webapi\Rest\Response;
 
@@ -20,7 +27,6 @@ class ChildCategoriesRequestManager implements ChildCategoriesRequestManagerInte
      * @var Response
      */
     private $response;
-
     /**
      * @var Collection
      */
@@ -32,6 +38,11 @@ class ChildCategoriesRequestManager implements ChildCategoriesRequestManagerInte
         $this->response = $response;
         $this->collection = $factory->create()->addAttributeToSelect('name');
     }
+
+    /**
+     * Fetches subcategories of the supplied category.
+     * @return Response
+     */
     public function getData()
     {
         $this->response->setHeader('Content-Type', 'application/json');
@@ -62,6 +73,11 @@ class ChildCategoriesRequestManager implements ChildCategoriesRequestManagerInte
         return $this->response->send();
     }
 
+    /**
+     * List out subcategories recursively.
+     * @param Category $category
+     * @return array
+     */
     private function getChildCategories(Category $category)
     {
         $categories = [];
