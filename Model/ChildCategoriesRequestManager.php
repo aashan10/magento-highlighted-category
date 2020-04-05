@@ -45,6 +45,7 @@ class ChildCategoriesRequestManager implements ChildCategoriesRequestManagerInte
             return $this->response->send();
         }
 
+        /** @var Category $category */
         $category = $this->collection->getItemById($categoryId);
         $children = $this->getChildCategories($category);
         $this->response->setStatusCode(200);
