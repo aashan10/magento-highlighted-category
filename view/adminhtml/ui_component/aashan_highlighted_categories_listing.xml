@@ -18,18 +18,21 @@
 			</button>
 		</buttons>
 	</settings>
-	<dataSource component="Magento_Ui/js/grid/provider" name="aashan_highlighted_categories_listing_data_source">
-		<settings>
-			<updateUrl path="mui/index/render"/>
-		</settings>
-		<aclResource>Aashan_HighlightedCategories::HighlightedCategory</aclResource>
-		<dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="aashan_highlighted_categories_listing_data_source">
-			<settings>
-				<requestFieldName>id</requestFieldName>
-				<primaryFieldName>id</primaryFieldName>
-			</settings>
-		</dataProvider>
-	</dataSource>
+    <dataSource name="aashan_highlighted_categories_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Aashan_HighlightedCategories::HighlightedCategory_view</aclResource>
+        <dataProvider class="Aashan\HighlightedCategories\Model\HighlightedCategory\HighlightedCategoriesDataProvider" name="aashan_highlighted_categories_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
 	<listingToolbar name="listing_top">
 		<settings>
 			<sticky>true</sticky>
