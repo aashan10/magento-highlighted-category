@@ -1,0 +1,17 @@
+<?php if ($block->getData('highlight_id')): ?>
+	<h2 class='highlight_id'><?php echo $block->getData('highlight_id'); ?></h2>
+<?php endif;
+
+use Aashan\HighlightedCategories\Block\Widget\HighlightedCategory;
+
+?>
+
+<?php
+/**
+ * @var $block HighlightedCategory
+ */
+?>
+<div>
+	<?= $block->getHighlightedCategories() ?>
+	<?= __('Hello Aashan_HighlightedCategories::widget/highlightedcategory.phtml') ?>
+</div>
