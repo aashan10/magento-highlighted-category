@@ -29,7 +29,7 @@
 		<settings>
 			<submitUrl path="*/*/save"/>
 		</settings>
-		<dataProvider class="Aashan\HighlightedCategories\Model\HighlightedCategory\DataProvider" name="highlighted_categories_form_data_source">
+		<dataProvider class="Aashan\HighlightedCategories\Model\HighlightedCategory\HighlightedCategoriesDataProvider" name="highlighted_categories_form_data_source">
 			<settings>
 				<requestFieldName>id</requestFieldName>
 				<primaryFieldName>id</primaryFieldName>
