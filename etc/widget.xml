@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+	<widget class="Aashan\HighlightedCategories\Block\Widget\HighlightedCategory" id="aashan_highlightedcategories_highlightedcategory">
+		<label>highlightedCategory</label>
+		<description>highlightedCategory</description>
+		<parameters>
+			<parameter name="highlight_id" sort_order="10" source_model="Magento\Config\Model\Config\Source\Yesno" visible="true" xsi:type="multiselect">
+				<label>highlight_id</label>
+			</parameter>
+		</parameters>
+	</widget>
+</widgets>
