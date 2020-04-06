@@ -1,59 +1,75 @@
 <?php
+
 /**
- * A Magento 2 Module for highlighted categories.
- * Copyright (C) 2020  Ashan Ghimire
- * 
- * This file is part of Aashan/HighlightedCategories.
- * 
- * Aashan/HighlightedCategories is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * This file is a part of HighlightedCategories Magento 2 module.
+ *
+ * @module HighlightedCategories
+ * @author Ashan Ghimire <ashanghimire10@gmail.com>
+ * @copyright Ashan Ghimire, 2020
  */
 
 namespace Aashan\HighlightedCategories\Block\Widget;
 
-use Magento\Widget\Block\BlockInterface;
+use Aashan\HighlightedCategories\Model\ResourceModel\HighlightedCategory\Collection;
+use Magento\Catalog\Model\ResourceModel\Category\Collection as CategoryCollection;
 use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Template\Context;
+use Magento\Widget\Block\BlockInterface;
 
-/**
- * Class HighlightedCategory
- *
- * @package Aashan\HighlightedCategories\Block\Widget
- */
 class HighlightedCategory extends Template implements BlockInterface
 {
-
     protected $_template = "widget/highlightedcategory.phtml";
+    /**
+     * @var CategoryCollection
+     */
+    private $categoryCollection;
+    /**
+     * @var Collection
+     */
+    private $highlightCollection;
 
     /**
      * Constructor
      *
-     * @param \Magento\Framework\View\Element\Template\Context  $context
+     * @param Context $context
+     * @param CategoryCollection $categoryCollection
+     * @param Collection $highlightCollection
      * @param array $data
      */
     public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
+        Context $context,
+        CategoryCollection $categoryCollection,
+        Collection $highlightCollection,
         array $data = []
     ) {
         parent::__construct($context, $data);
+        $this->categoryCollection = $categoryCollection;
+        $this->highlightCollection = $highlightCollection;
+        $this->categoryCollection->addFieldToSelect('name');
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getHighlightedCategories()
+    public function getHighlights()
     {
-        //Your block code
-        return __('Hello Developer! This how to get the storename: %1 and this is the way to build a url: %2', $this->_storeManager->getStore()->getName(), $this->getUrl('contacts'));
+        $highlightIds = explode(',', $this->getData('highlightIds'));
+        $highlights = [];
+        foreach ($highlightIds as $highlightId) {
+            $childCategories = [];
+            $highlight = $this->highlightCollection->getItemById($highlightId);
+            $childCategoryIds = json_decode($highlight->getData('child_categories'));
+            foreach ($childCategoryIds as $childCategoryId) {
+                $childCategories[$childCategoryId] = $this->categoryCollection->getItemById($childCategoryId);
+            }
+            $highlights[$highlightId] = [
+                'id' => $highlight->getId(),
+                'code' => $highlight->getData('code'),
+                'parent_category' => $this->categoryCollection->getItemById($highlight->getData('parent_category')),
+                'child_categories' => $childCategories,
+                'expires_on' => $highlight->getData('expires_on'),
+            ];
+        }
+        return $highlights;
     }
 }
-
