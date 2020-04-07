@@ -1,0 +1,14 @@
+<?php
+
+use Aashan\HighlightedCategories\Block\Widget\HighlightedCategory;
+
+/** @var HighlightedCategory $block */
+
+?>
+<h1><?= __('Highlighted Categories') ?></h1>
+
+<?php foreach ($block->getHighlights() as $highlight): ?>
+    <div class="highlighted-categories item">
+        <?= $highlight['parent_category']->getData('name')?>
+    </div>
+<?php endforeach; ?>

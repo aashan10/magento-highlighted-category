@@ -45,7 +45,6 @@ class ChildCategoriesRequestManager implements ChildCategoriesRequestManagerInte
      */
     public function getData()
     {
-        $this->response->setHeader('Content-Type', 'application/json');
         $categoryId = $this->request->getParam('id');
         if (!$categoryId) {
             $this->response->setStatusCode(400);
