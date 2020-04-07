@@ -15,6 +15,7 @@ use Magento\Catalog\Model\ResourceModel\Category\Collection as CategoryCollectio
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Widget\Block\BlockInterface;
+use Magento\Catalog\Helper\Image;
 
 class HighlightedCategory extends Template implements BlockInterface
 {
@@ -27,6 +28,10 @@ class HighlightedCategory extends Template implements BlockInterface
      * @var Collection
      */
     private $highlightCollection;
+    /**
+     * @var Image
+     */
+    private $imageHelper;
 
     /**
      * Constructor
@@ -34,18 +39,21 @@ class HighlightedCategory extends Template implements BlockInterface
      * @param Context $context
      * @param CategoryCollection $categoryCollection
      * @param Collection $highlightCollection
+     * @param Image $imageHelper
      * @param array $data
      */
     public function __construct(
         Context $context,
         CategoryCollection $categoryCollection,
         Collection $highlightCollection,
+        Image $imageHelper,
         array $data = []
     ) {
         parent::__construct($context, $data);
         $this->categoryCollection = $categoryCollection;
         $this->highlightCollection = $highlightCollection;
         $this->categoryCollection->addFieldToSelect('name');
+        $this->imageHelper = $imageHelper;
     }
 
     /**
@@ -71,5 +79,10 @@ class HighlightedCategory extends Template implements BlockInterface
             ];
         }
         return $highlights;
+    }
+
+    public function getImageUrl()
+    {
+        return $this->imageHelper->getDefaultPlaceholderUrl();
     }
 }
