@@ -3,12 +3,29 @@
 use Aashan\HighlightedCategories\Block\Widget\HighlightedCategory;
 
 /** @var HighlightedCategory $block */
-
+$items = $block->getHighlights();
 ?>
-<h1><?= __('Highlighted Categories') ?></h1>
-
-<?php foreach ($block->getHighlights() as $highlight): ?>
-    <div class="highlighted-categories item">
-        <?= $highlight['parent_category']->getData('name')?>
+<?php if (count($items) > 0) : ?>
+    <div class="highlighted-categories">
+        <h1 class="highlight-header"> <?= __('Highlighted Categories') ?> </h1>
+        <div class="highlight-menu">
+            <?php foreach ($items as $item): ?>
+                <div class="highlighted-category-menu menu-item" data-target="<?= $item['parent_category']->getData('id') ?>">
+                    <?= $item['parent_category']->getData('name') ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="highlight-list">
+            <?php foreach ($items as $item): ?>
+                <div class="highlight-item" id="<?= $item['parent_category']->getData('id') ?>">
+                    <?php foreach ($item['child_categories'] as $child) : ?>
+                        <div class="highlight-item-category">
+                            <img src="<?= $block->getImageUrl() ?>"  alt="<?= $child->getData('name') ?>"/>
+                            <strong><?= $child->getData('name') ?></strong>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
-<?php endforeach; ?>
+<?php endif; ?>
